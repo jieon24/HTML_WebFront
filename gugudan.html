@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-bind:align="myAlign">학번 : 20221010 <br> 이름 : 김지언</p>
+        <button v-on:click="showGuGudan()" v-bind:style="{ backgroundColor:myColor }">구구단 보이기</button>
+        <button v-on:click="addTable()" v-bind:style="{ backgroundColor:myColor }">한 단씩 추가하기</button>
+        <button v-on:click="deleteTable()" v-bind:style="{ backgroundColor:myColor }">마지막 단 삭제</button>
+        <table>
+          <thead>
+            <tr>
+              <th v-for="n in Header" v-bind:style="{ backgroundColor:myColor2 }">{{ n }} 단</th>
+            </tr>
+          </thead>
+          <tbody v-if="myShow">
+            <tr v-for="item in 9">
+              <td v-for="item2 in Header">{{ item2 }}x{{ item }}={{ item*item2 }}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                Header: [2, 3, 4, 5, 6, 7, 8, 9],
+                myAlign:'right',
+                myColor:'#CEF279',
+                myColor2:'#A566FF',
+                myShow:false
+        },
+        methods: {
+            addTable() {
+                const newTable = this.Header.length + 2
+                this.Header.splice(this.Header.length + 2, 0, newTable)
+            },
+            deleteTable() {
+                if (this.Header.length > 1) {
+                    this.Header.splice(-1, 1)
+                }
+            },
+            showGuGudan: function() {
+                this.myShow =true;
+            }
+        }
+    })
+    </script>
+</body>
+</html>
