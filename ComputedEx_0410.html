@@ -9,17 +9,17 @@
 </head>
 
 <body>
-    <h2>금액을 입력하면 소비세가 포함된 금액을 계산하는 예제</h2>
-    <div id="app">
+    <div id="app1">
+        <h2 v-bind:style="{ backgroundColor: myColor }">금액을 입력하면 소비세가 포함된 금액을 계산하는 예제</h2>
         <input v-model.number="price" type="number">원
         <input v-model.number="count" type="number">원<br>
 
-        <p v-bind:style="{ backgroundColor: myColor }"> 합계 {{ sum }} 원</p>
-        <p v-bind:style="{ backgroundColor: myColor2 }">소비세 포함 금액 {{ taxIncluded }}원</p>
+        <p> 합계 {{ sum }} 원</p>
+        <p> 소비세 포함 금액 {{ taxIncluded }}원</p>
     </div>
     <script>
         new Vue({
-            el:'#app',
+            el:'#app1',
             data: {
                 price: 100,
                 count: 1,
@@ -36,18 +36,18 @@
             }
         })
     </script>
-   
-    <h2>문장을 입력하면 남은 글자수를 표시하는 예제</h2>
-    <div id="app">
+    <div id="app2">
+        <h2 v-bind:style="{ backgroundColor: myColor }">문장을 입력하면 남은 글자수를 표시하는 예제</h2>
         <p>감상은 100자 이내로 입력해 주세요.</p>
         <textarea v-model="myText"></textarea>
         <p v-bind:style="{ color : computedColor }">남은 글자는 {{remaining}} 입니다.</p>
     </div>
     <script>
         new Vue({
-            el:'#app',
+            el:'#app2',
             data: {
-                myText:'today is monday'
+                myText:'today is monday',
+                myColor: 'skyblue'
             },
             computed: {
                 remaining: function() {
@@ -67,8 +67,8 @@
         })
     </script>
 
-    <h2>문자를 입력하면 그 문자를 포함한 항목만 표시하는 예제</h2>
-    <div id="app">
+    <div id="app3">
+        <h2 v-bind:style="{ backgroundColor: myColor }">문자를 입력하면 그 문자를 포함한 항목만 표시하는 예제</h2>
         <input v-model = "findWord">
         <ul>
             <li v-for="item in finditems">{{items}}</li>
@@ -76,10 +76,11 @@
     </div>
     <script>
         new Vue({
-            el:'#app',
+            el:'#app3',
             data: {
                 findWord:'',
-                items: ['서울시','인천시','부산광역','대구광역','제주','대전']
+                items: ['서울시','인천시','부산광역','대구광역','제주','대전'],
+                myColor: '#D1B2FF'
             },
             computed: {
                 findItems: function() {
